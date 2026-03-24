@@ -1,17 +1,14 @@
 "use client";
 
-import { useQuoteModal } from "@/contexts/quote-modal-context";
+import Link from "next/link";
 
 export function ServicePageClient() {
-  const { open } = useQuoteModal();
-
   return (
-    <button
-      type="button"
-      onClick={() => open()}
-      className="mt-8 rounded-full bg-[var(--sl-accent)] px-7 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+    <Link
+      href="/get-pricing"
+      className="btn-arrow mt-10 inline-flex border-2 border-[var(--sl-red)] bg-[var(--sl-red)] px-7 py-3.5 font-[family-name:var(--font-display)] text-sm tracking-[0.15em] text-[var(--background)] uppercase transition hover:bg-transparent hover:text-[var(--sl-red)]"
     >
-      Get a quote for this service
-    </button>
+      Get pricing for this service <span aria-hidden>&rarr;</span>
+    </Link>
   );
 }

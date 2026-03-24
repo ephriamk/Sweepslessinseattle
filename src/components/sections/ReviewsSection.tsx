@@ -14,14 +14,14 @@ export function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="border-y border-[var(--sl-border)] bg-[var(--sl-wash)] py-16 md:py-24"
+      className="bg-[var(--sl-wash)] py-24 md:py-36"
     >
       <div className="mx-auto max-w-6xl px-4">
-        <header className="mb-12 max-w-2xl" data-aos="fade-up" data-aos-duration="700">
-          <p className="text-sm font-semibold tracking-widest text-[var(--sl-accent)] uppercase">
+        <header className="mb-16 max-w-2xl" data-aos="fade-up" data-aos-duration="800">
+          <p className="text-xs font-bold tracking-[0.25em] text-[var(--sl-red)] uppercase">
             {reviewsHeading.eyebrow}
           </p>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold italic text-[var(--sl-gold)] md:text-4xl">
+          <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl leading-[1.0] tracking-wider text-[var(--sl-ink)] uppercase md:text-5xl">
             {reviewsHeading.title}
           </h2>
         </header>
@@ -29,7 +29,7 @@ export function ReviewsSection() {
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <Swiper
             modules={[Autoplay, Pagination]}
-            spaceBetween={20}
+            spaceBetween={24}
             slidesPerView={1}
             breakpoints={{
               640: { slidesPerView: 2 },
@@ -42,20 +42,23 @@ export function ReviewsSection() {
                 : { delay: 5000, disableOnInteraction: true }
             }
             loop
-            className="reviews-swiper pb-12"
+            className="reviews-swiper pb-14"
           >
             {curatedReviews.map((r) => (
               <SwiperSlide key={r.name}>
-                <article className="card-glow h-full rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-7 shadow-sm">
-                  <div className="flex items-center gap-3">
+                <article className="card-glow flex h-full flex-col rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-8">
+                  <p className="flex-1 text-[15px] leading-[1.9] text-[var(--foreground)]">
+                    &ldquo;{r.excerpt}&rdquo;
+                  </p>
+                  <div className="mt-6 flex items-center gap-3 border-t border-[var(--sl-border)] pt-5">
                     <div
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sl-gold)]/10 text-sm font-semibold text-[var(--sl-gold)]"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sl-ink)] font-[family-name:var(--font-display)] text-sm text-[var(--sl-red)]"
                       aria-hidden
                     >
                       {r.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-[var(--sl-ink)]">
+                      <p className="text-sm font-bold text-[var(--sl-ink)]">
                         {r.name}
                       </p>
                       <p className="text-xs text-[var(--sl-muted)]">
@@ -63,21 +66,18 @@ export function ReviewsSection() {
                       </p>
                     </div>
                   </div>
-                  <p className="mt-4 text-[15px] leading-[1.8] text-[var(--foreground)]">
-                    &ldquo;{r.excerpt}&rdquo;
-                  </p>
                 </article>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
 
-        <div className="mt-6 text-center" data-aos="fade-up" data-aos-delay="200">
+        <div className="mt-4 text-center" data-aos="fade-up" data-aos-delay="200">
           <Link
             href="/reviews"
-            className="text-sm font-medium text-[var(--sl-gold)] underline decoration-[var(--sl-gold)]/30 underline-offset-4 transition hover:decoration-[var(--sl-gold)]"
+            className="btn-arrow text-sm font-bold tracking-[0.1em] text-[var(--sl-red)] uppercase transition hover:text-[var(--sl-accent)]"
           >
-            Read all reviews
+            Read all reviews <span aria-hidden>&rarr;</span>
           </Link>
         </div>
       </div>

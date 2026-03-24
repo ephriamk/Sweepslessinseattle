@@ -6,7 +6,7 @@ import { sendQuoteRequest, type QuoteFormState } from "@/app/actions/send-quote"
 import { services } from "@/content/site";
 
 const inputClass =
-  "w-full rounded-xl border border-[var(--sl-border)] bg-[var(--sl-wash)] px-4 py-3 text-sm text-[var(--foreground)] placeholder:text-[var(--sl-muted)] outline-none transition focus:border-[var(--sl-gold)] focus:ring-1 focus:ring-[var(--sl-gold)]/30";
+  "w-full rounded-lg border border-[var(--sl-border)] bg-[var(--sl-surface)] px-4 py-3 text-sm text-[var(--foreground)] placeholder:text-[var(--sl-muted)] outline-none transition focus:border-[var(--sl-red)] focus:ring-1 focus:ring-[var(--sl-red)]/30";
 
 export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -27,7 +27,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
     <form ref={formRef} action={action} className="space-y-4">
       <div>
         <label htmlFor="quote-name" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-          Name <span className="text-[var(--sl-accent)]">*</span>
+          Name <span className="text-[var(--sl-red)]">*</span>
         </label>
         <input
           id="quote-name"
@@ -42,8 +42,22 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
+          <label htmlFor="quote-phone" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
+            Phone <span className="text-[var(--sl-red)]">*</span>
+          </label>
+          <input
+            id="quote-phone"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            className={inputClass}
+            placeholder="(210) 555-0000"
+          />
+        </div>
+        <div>
           <label htmlFor="quote-email" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-            Email <span className="text-[var(--sl-accent)]">*</span>
+            Email <span className="text-[var(--sl-red)]">*</span>
           </label>
           <input
             id="quote-email"
@@ -55,24 +69,11 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
             placeholder="you@example.com"
           />
         </div>
-        <div>
-          <label htmlFor="quote-phone" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-            Phone
-          </label>
-          <input
-            id="quote-phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            className={inputClass}
-            placeholder="(206) 555-0000"
-          />
-        </div>
       </div>
 
       <div>
         <label htmlFor="quote-service" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-          Service interested in
+          Service type
         </label>
         <select
           id="quote-service"
@@ -81,7 +82,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
           defaultValue=""
         >
           <option value="" disabled>
-            Choose a service (optional)
+            Choose a service
           </option>
           {services.map((s) => (
             <option key={s.id} value={s.name}>
@@ -94,7 +95,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
 
       <div>
         <label htmlFor="quote-message" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-          Message <span className="text-[var(--sl-accent)]">*</span>
+          Message <span className="text-[var(--sl-red)]">*</span>
         </label>
         <textarea
           id="quote-message"
@@ -106,13 +107,26 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
         />
       </div>
 
+      <div className="flex items-start gap-3">
+        <input
+          id="quote-consent"
+          name="consent"
+          type="checkbox"
+          required
+          className="mt-1 h-4 w-4 rounded border-[var(--sl-border)] accent-[var(--sl-red)]"
+        />
+        <label htmlFor="quote-consent" className="text-xs leading-relaxed text-[var(--sl-muted)]">
+          I agree to receive emails, texts or phone calls about the services I am inquiring about <span className="text-[var(--sl-red)]">*</span>
+        </label>
+      </div>
+
       {state && (
         <div
           role="alert"
-          className={`rounded-xl px-4 py-3 text-sm ${
+          className={`rounded-lg border px-4 py-3 text-sm ${
             state.success
-              ? "bg-emerald-50 text-emerald-800"
-              : "bg-red-50 text-red-800"
+              ? "border-[var(--sl-border)] bg-[var(--sl-wash)] text-[var(--sl-ink)]"
+              : "border-[var(--sl-red)]/20 bg-[var(--sl-red)]/5 text-[var(--sl-red)]"
           }`}
         >
           {state.message}
@@ -122,9 +136,9 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
       <button
         type="submit"
         disabled={isPending}
-        className="w-full rounded-full bg-[var(--sl-accent)] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:opacity-60"
+        className="btn-arrow w-full justify-center border-2 border-[var(--sl-red)] bg-[var(--sl-red)] px-6 py-3.5 font-[family-name:var(--font-display)] text-base tracking-[0.15em] text-[var(--background)] uppercase transition hover:bg-transparent hover:text-[var(--sl-red)] disabled:opacity-60"
       >
-        {isPending ? "Sending\u2026" : "Send quote request"}
+        {isPending ? "Sending\u2026" : "Submit"}
       </button>
     </form>
   );

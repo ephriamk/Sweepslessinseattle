@@ -10,23 +10,25 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="border-t border-[var(--sl-border)] bg-[var(--sl-wash)] py-16 md:py-24"
+      className="bg-[var(--background)] py-24 md:py-36"
     >
       <div className="mx-auto max-w-3xl px-4">
-        <header data-aos="fade-up" data-aos-duration="700">
-          <p className="text-sm font-semibold tracking-widest text-[var(--sl-accent)] uppercase">
+        <header data-aos="fade-up" data-aos-duration="800">
+          <p className="text-xs font-bold tracking-[0.25em] text-[var(--sl-red)] uppercase">
             Common questions
           </p>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold italic text-[var(--sl-gold)] md:text-4xl">
-            Frequently asked questions
+          <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl leading-[1.0] tracking-wider text-[var(--sl-ink)] uppercase md:text-5xl">
+            Frequently asked
+            <br />
+            <span className="text-[var(--sl-red)]">questions</span>
           </h2>
         </header>
 
-        <dl className="mt-10 divide-y divide-[var(--sl-border)]" data-aos="fade-up" data-aos-delay="100">
+        <dl className="mt-14 divide-y divide-[var(--sl-border)]" data-aos="fade-up" data-aos-delay="100">
           {faqItems.map((item, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={i} className="py-5">
+              <div key={i} className="py-6">
                 <dt>
                   <button
                     type="button"
@@ -34,12 +36,12 @@ export function FaqSection() {
                     aria-expanded={isOpen}
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                   >
-                    <span className="text-base font-semibold text-[var(--sl-ink)]">
+                    <span className="text-base font-bold text-[var(--sl-ink)]">
                       {item.question}
                     </span>
                     <span
                       className={clsx(
-                        "mt-0.5 shrink-0 text-[var(--sl-gold)] transition-transform duration-200",
+                        "mt-0.5 shrink-0 text-[var(--sl-red)] transition-transform duration-300",
                         isOpen && "rotate-45",
                       )}
                       aria-hidden
@@ -53,10 +55,10 @@ export function FaqSection() {
                 <dd
                   className={clsx(
                     "overflow-hidden transition-[max-height,opacity] duration-300",
-                    isOpen ? "mt-3 max-h-96 opacity-100" : "max-h-0 opacity-0",
+                    isOpen ? "mt-4 max-h-96 opacity-100" : "max-h-0 opacity-0",
                   )}
                 >
-                  <p className="text-[15px] leading-relaxed text-[var(--sl-muted)]">
+                  <p className="text-[15px] leading-[1.85] text-[var(--sl-muted)]">
                     {item.answer}
                   </p>
                 </dd>

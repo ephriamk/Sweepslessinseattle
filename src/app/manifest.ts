@@ -5,11 +5,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Sweepsless in Seattle",
     short_name: "Sweepsless",
     description:
-      "Professional house cleaning in Seattle and the Eastside. No contracts, vetted teams, flexible scheduling.",
+      "Professional house cleaning in Woodinville, Kirkland, Bellevue, and the greater Eastside. Non-toxic, plant-based care. No contracts.",
     start_url: "/",
     display: "standalone",
-    background_color: "#faf8f5",
-    theme_color: "#8a6d2f",
+    background_color: "#ECDCC2",
+    theme_color: "#C41E3A",
     icons: [
       {
         src: "/icon.svg",

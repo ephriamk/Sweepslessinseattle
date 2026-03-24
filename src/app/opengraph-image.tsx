@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Sweepsless in Seattle — Professional House Cleaning";
+export const alt = "Sweepsless in Seattle \u2014 Cleaning Made Charming";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -16,7 +16,7 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #faf8f5 0%, #f2ede8 100%)",
+          background: "#2F2B28",
           fontFamily: "Georgia, serif",
         }}
       >
@@ -33,14 +33,14 @@ export default function OgImage() {
               width: "80px",
               height: "80px",
               borderRadius: "18px",
-              background: "#8a6d2f",
+              background: "#C41E3A",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: "42px",
               fontWeight: "bold",
               fontStyle: "italic",
-              color: "#fff",
+              color: "#ECDCC2",
             }}
           >
             S
@@ -49,10 +49,11 @@ export default function OgImage() {
             style={{
               fontSize: "56px",
               fontWeight: "bold",
-              fontStyle: "italic",
-              color: "#8a6d2f",
+              color: "#ECDCC2",
               margin: "0",
               lineHeight: "1.2",
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
             }}
           >
             Sweepsless in Seattle
@@ -60,31 +61,31 @@ export default function OgImage() {
           <p
             style={{
               fontSize: "24px",
-              color: "#7a7068",
+              color: "#C41E3A",
               margin: "0",
-              letterSpacing: "0.1em",
+              letterSpacing: "0.15em",
               textTransform: "uppercase",
             }}
           >
-            Professional House Cleaning
+            Cleaning Made Charming
           </p>
           <div
             style={{
               width: "200px",
               height: "2px",
-              background: "linear-gradient(90deg, transparent, #e0d8d0, transparent)",
+              background: "#C41E3A",
               marginTop: "8px",
             }}
           />
           <p
             style={{
-              fontSize: "20px",
-              color: "#7a7068",
+              fontSize: "18px",
+              color: "rgba(236, 220, 194, 0.6)",
               margin: "0",
               marginTop: "4px",
             }}
           >
-            Seattle &amp; the Eastside &bull; No Contracts &bull; Vetted Teams
+            Woodinville &bull; Kirkland &bull; Bellevue &bull; Eastside
           </p>
         </div>
       </div>

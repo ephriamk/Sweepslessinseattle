@@ -3,59 +3,45 @@
 import Image from "next/image";
 import Link from "next/link";
 import { familyBand } from "@/content/site";
-import { useQuoteModal } from "@/contexts/quote-modal-context";
 
 export function FamilyBandSection() {
-  const { open: openQuote } = useQuoteModal();
-
   return (
-    <section className="bg-[var(--background)] py-16 md:py-24">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
-        <div data-aos="fade-right" data-aos-duration="800">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold italic text-[var(--sl-gold)] md:text-4xl">
-            {familyBand.title}
-          </h2>
-          <p className="mt-5 text-base leading-[1.85] text-[var(--foreground)]">
-            {familyBand.body}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <button
-              type="button"
-              onClick={() => openQuote()}
-              className="rounded-full bg-[var(--sl-accent)] px-7 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-            >
-              {familyBand.cta}
-            </button>
-            <Link
-              href="/about"
-              className="rounded-full border border-[var(--sl-gold)]/30 px-7 py-3 text-sm font-medium text-[var(--sl-gold)] transition hover:bg-[var(--sl-gold)]/8"
-            >
-              Our story
-            </Link>
-          </div>
-        </div>
-        <div
-          className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[var(--sl-border)] shadow-lg"
-          data-aos="fade-left"
-          data-aos-duration="800"
-          data-aos-delay="150"
-        >
-          <Image
-            src={familyBand.image}
-            alt="A welcoming Seattle home serviced by Sweepsless"
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/50 to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4">
-            <button
-              type="button"
-              onClick={() => openQuote()}
-              className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-center font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--sl-gold)] shadow-lg backdrop-blur transition hover:bg-white"
-            >
-              {familyBand.cta}
-            </button>
+    <section className="relative min-h-[70vh] overflow-hidden">
+      {/* Full-bleed background image */}
+      <Image
+        src={familyBand.image}
+        alt="A welcoming home serviced by Sweepsless in Seattle"
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-[var(--sl-ink)]/80" />
+      <div className="grain absolute inset-0" />
+
+      <div className="relative flex min-h-[70vh] items-center">
+        <div className="mx-auto max-w-6xl px-4 py-24 md:py-36">
+          <div className="max-w-2xl" data-aos="fade-up" data-aos-duration="900">
+            <h2 className="font-[family-name:var(--font-display)] text-4xl leading-[1.0] tracking-wider text-[var(--background)] uppercase md:text-5xl lg:text-6xl">
+              {familyBand.title}
+            </h2>
+            <div className="mt-6 h-px w-16 bg-[var(--sl-red)]" />
+            <p className="mt-8 text-lg leading-[1.9] text-[var(--background)]/70">
+              {familyBand.body}
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <Link
+                href="/get-pricing"
+                className="btn-arrow border-2 border-[var(--sl-red)] bg-[var(--sl-red)] px-8 py-4 font-[family-name:var(--font-display)] text-sm tracking-[0.15em] text-[var(--background)] uppercase transition hover:bg-transparent hover:text-[var(--sl-red)]"
+              >
+                {familyBand.cta} <span aria-hidden>&rarr;</span>
+              </Link>
+              <Link
+                href="/about"
+                className="text-sm font-bold tracking-[0.1em] text-[var(--background)]/60 uppercase transition hover:text-[var(--background)]"
+              >
+                Our story
+              </Link>
+            </div>
           </div>
         </div>
       </div>

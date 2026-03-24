@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Cormorant, Playfair_Display, Great_Vibes, Geist_Mono } from "next/font/google";
+import { Libre_Baskerville, Bebas_Neue, Great_Vibes, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { JsonLd } from "@/components/JsonLd";
 import { localBusinessJsonLd, webSiteJsonLd } from "@/lib/json-ld";
 import { site } from "@/content/site";
 
-const cormorant = Cormorant({
-  variable: "--font-cormorant",
+const libreBaskerville = Libre_Baskerville({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
-const playfair = Playfair_Display({
+const bebasNeue = Bebas_Neue({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: "400",
 });
 
 const greatVibes = Great_Vibes({
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description:
-    "Professional house cleaning in Seattle and the Eastside. No contracts, vetted teams, flexible scheduling. Regular, deep, move-in/out, and post-construction cleaning.",
+    "Professional house cleaning in Woodinville, Kirkland, Bellevue, and the greater Eastside. Restorative cleans, deep details, and date-night-ready atmospheres \u2014 we promise to sweep you off your feet.",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${libreBaskerville.variable} ${bebasNeue.variable} ${greatVibes.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <JsonLd data={localBusinessJsonLd()} />

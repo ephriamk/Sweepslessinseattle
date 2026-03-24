@@ -1,130 +1,131 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { hero, trustBullets } from "@/content/site";
-import { useQuoteModal } from "@/contexts/quote-modal-context";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
+const subtitleWords = hero.subtitle.split(" ");
+
 export function HeroSection() {
-  const { open: openQuote } = useQuoteModal();
   const reducedMotion = useReducedMotion();
 
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden bg-[var(--background)]"
-    >
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
-        <div
-          className="order-2 lg:order-1"
-          data-aos="fade-right"
-          data-aos-duration="900"
-        >
-          <h1 className="font-[family-name:var(--font-display)] text-4xl leading-[1.15] font-semibold italic tracking-tight text-[var(--sl-gold)] sm:text-5xl lg:text-6xl">
-            {hero.title}
-          </h1>
-          <p className="mt-5">
-            <span className="font-[family-name:var(--font-script)] text-3xl text-[var(--sl-ink)]">
-              {hero.subtitle}
-            </span>{" "}
-            <span className="text-sm font-semibold tracking-[0.25em] text-[var(--sl-gold)] uppercase">
-              {hero.subtitleAccent}
-            </span>
-          </p>
+    <section id="hero" className="relative">
+      {/* Full-bleed cinematic hero */}
+      <div className="grain relative min-h-[100svh] overflow-hidden bg-[var(--sl-ink)]">
+        <Image
+          src={hero.videoPoster}
+          alt="A warm, beautifully styled living room with soft golden light"
+          fill
+          className="object-cover opacity-20"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--sl-ink)]/60 via-transparent to-[var(--sl-ink)]" />
 
-          <div className="gold-rule my-8" />
+        <div className="relative flex min-h-[100svh] flex-col justify-center px-4">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="max-w-3xl">
+              <p
+                className="hero-fade-in font-[family-name:var(--font-script)] text-xl text-[var(--sl-red)] sm:text-2xl"
+              >
+                {hero.titleLine1}
+              </p>
+              <h1
+                className="hero-fade-in-delay mt-2 font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-wide text-[var(--background)] uppercase"
+              >
+                {hero.titleAccent}
+              </h1>
 
-          <div>
-            <Swiper
-              modules={[Pagination, Autoplay]}
-              spaceBetween={24}
-              slidesPerView={1}
-              pagination={{ clickable: true }}
-              autoplay={
-                reducedMotion
-                  ? false
-                  : { delay: 6000, disableOnInteraction: true }
-              }
-              className="hero-testimonial-swiper pb-10"
-            >
-              {hero.testimonials.map((t) => (
-                <SwiperSlide key={t.author}>
-                  <div className="pr-2">
-                    <StarRow />
-                    <p className="mt-4 text-lg leading-[1.8] text-[var(--foreground)]">
-                      &ldquo;{t.quote}&rdquo;
-                    </p>
-                    <p className="mt-4 text-sm font-medium text-[var(--sl-gold)]">
-                      &mdash; {t.author}
-                    </p>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-          <button
-            type="button"
-            onClick={() => openQuote()}
-            className="mt-4 rounded-full bg-[var(--sl-accent)] px-7 py-3.5 text-[15px] font-semibold text-white shadow-md transition hover:opacity-90 hover:shadow-lg"
-          >
-            {hero.cta}
-          </button>
-        </div>
+              <div className="mt-8 h-px w-20 bg-[var(--sl-red)]" />
 
-        <div
-          className="order-1 lg:order-2"
-          data-aos="fade-left"
-          data-aos-duration="900"
-          data-aos-delay="150"
-        >
-          <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-full border-4 border-[var(--sl-gold)]/30 shadow-xl">
-            <Image
-              src={hero.videoPoster}
-              alt="A clean, bright Seattle home interior"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-            <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
-              aria-hidden
-            />
+              <p className="word-reveal mt-8 max-w-xl text-lg leading-relaxed text-[var(--background)]/70 sm:text-xl">
+                {subtitleWords.map((word, i) => (
+                  <span
+                    key={i}
+                    style={reducedMotion ? undefined : { animationDelay: `${1.0 + i * 0.1}s` }}
+                  >
+                    {word}{" "}
+                  </span>
+                ))}
+              </p>
+
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/get-pricing"
+                  className="btn-arrow rounded-none border-2 border-[var(--sl-red)] bg-[var(--sl-red)] px-8 py-4 font-[family-name:var(--font-display)] text-base tracking-[0.15em] text-[var(--background)] uppercase transition hover:bg-transparent hover:text-[var(--sl-red)]"
+                >
+                  {hero.cta} <span aria-hidden>&rarr;</span>
+                </Link>
+                <a
+                  href="#services"
+                  className="text-sm tracking-wide text-[var(--background)]/50 transition hover:text-[var(--background)]"
+                >
+                  Explore services
+                </a>
+              </div>
+            </div>
+
+            {/* Floating testimonial */}
+            <div className="mt-16 max-w-md lg:absolute lg:right-8 lg:bottom-32 lg:mt-0 xl:right-16">
+              <Swiper
+                modules={[Pagination, Autoplay]}
+                spaceBetween={24}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                autoplay={
+                  reducedMotion
+                    ? false
+                    : { delay: 6000, disableOnInteraction: true }
+                }
+                className="hero-testimonial-swiper pb-8"
+              >
+                {hero.testimonials.map((t) => (
+                  <SwiperSlide key={t.author}>
+                    <div className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
+                      <StarRow />
+                      <p className="mt-3 text-sm leading-[1.8] text-[var(--background)]/60">
+                        &ldquo;{t.quote}&rdquo;
+                      </p>
+                      <p className="mt-3 text-xs font-medium text-[var(--sl-red)]">
+                        &mdash; {t.author}
+                      </p>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
       </div>
 
-      <div
-        className="border-t border-[var(--sl-border)] bg-[var(--sl-wash)]"
-        data-aos="fade-up"
-        data-aos-duration="700"
-        data-aos-delay="200"
-      >
-        <ul className="mx-auto flex max-w-6xl flex-wrap justify-center gap-8 px-4 py-10 sm:gap-12">
-          {trustBullets.map((b, i) => (
-            <li
+      {/* Trust strip */}
+      <div className="border-t border-[var(--sl-border)] bg-[var(--background)]">
+        <div className="scroll-snap-x mx-auto flex max-w-6xl gap-8 overflow-x-auto px-4 py-8 sm:flex-wrap sm:justify-center sm:gap-10 sm:overflow-visible lg:justify-between">
+          {trustBullets.map((b) => (
+            <div
               key={b.id}
-              className="flex max-w-[10rem] flex-col items-center text-center"
-              data-aos="fade-up"
-              data-aos-delay={300 + i * 80}
-              data-aos-duration="600"
+              className="flex shrink-0 items-center gap-3"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--sl-gold)]/20 bg-[var(--sl-gold)]/8 text-sm text-[var(--sl-gold)]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--sl-red)]/10 text-xs text-[var(--sl-red)]">
                 &#10003;
               </span>
-              <span className="mt-3 text-sm font-semibold text-[var(--sl-ink)]">
-                {b.label}
-              </span>
-              <span className="mt-0.5 text-xs text-[var(--sl-muted)]">
-                {b.short}
-              </span>
-            </li>
+              <div>
+                <span className="block text-sm font-bold text-[var(--sl-ink)]">
+                  {b.label}
+                </span>
+                <span className="text-xs text-[var(--sl-muted)]">
+                  {b.short}
+                </span>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
@@ -132,14 +133,14 @@ export function HeroSection() {
 
 function StarRow() {
   return (
-    <ul className="flex gap-1" aria-label="5 out of 5 stars">
+    <ul className="flex gap-0.5" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
         <li key={i}>
-          <svg width="20" height="19" viewBox="0 0 24.814 23.599" aria-hidden>
+          <svg width="14" height="13" viewBox="0 0 24.814 23.599" aria-hidden>
             <path
               d="M147.17,629.89,150.1,638.9h9.478l-7.668,5.571,2.929,9.014-7.668-5.571-7.668,5.571,2.929-9.014-7.668-5.571h9.478Z"
               transform="translate(-134.763 -629.89)"
-              fill="var(--sl-gold)"
+              fill="var(--sl-red)"
             />
           </svg>
         </li>

@@ -14,7 +14,7 @@ import { faqItems } from "@/content/site";
 
 export const metadata: Metadata = {
   description:
-    "Sweepsless in Seattle offers professional house cleaning across Seattle and the Eastside. No contracts, vetted teams, and flexible scheduling for regular, deep, move-in/out, and post-construction cleans.",
+    "Sweepsless in Seattle \u2014 cleaning made charming. Restorative cleans, deep details, and date-night-ready atmospheres for Kirkland, Bellevue, Woodinville, and the greater Eastside. We promise to sweep you off your feet.",
   alternates: { canonical: "/" },
 };
 

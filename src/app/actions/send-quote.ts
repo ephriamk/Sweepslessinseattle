@@ -16,9 +16,14 @@ export async function sendQuoteRequest(
   const phone = formData.get("phone")?.toString().trim();
   const service = formData.get("service")?.toString().trim();
   const message = formData.get("message")?.toString().trim();
+  const consent = formData.get("consent");
 
-  if (!name || !email || !message) {
+  if (!name || !email || !phone || !message) {
     return { success: false, message: "Please fill in all required fields." };
+  }
+
+  if (!consent) {
+    return { success: false, message: "Please agree to the communication consent before submitting." };
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,26 +32,32 @@ export async function sendQuoteRequest(
   }
 
   const htmlBody = `
-    <div style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; color: #2c2420;">
-      <h2 style="color: #8a6d2f; margin-bottom: 16px;">New Quote Request</h2>
+    <div style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; color: #1A1A1A;">
+      <h2 style="color: #C41E3A; margin-bottom: 16px;">New Pricing Request</h2>
       <table style="width: 100%; border-collapse: collapse;">
         <tr>
           <td style="padding: 8px 12px; font-weight: bold; vertical-align: top; width: 100px;">Name</td>
           <td style="padding: 8px 12px;">${escapeHtml(name)}</td>
         </tr>
-        <tr style="background: #f2ede8;">
+        <tr style="background: #F5ECD7;">
           <td style="padding: 8px 12px; font-weight: bold; vertical-align: top;">Email</td>
           <td style="padding: 8px 12px;"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td>
         </tr>
-        ${phone ? `<tr><td style="padding: 8px 12px; font-weight: bold; vertical-align: top;">Phone</td><td style="padding: 8px 12px;"><a href="tel:${escapeHtml(phone)}">${escapeHtml(phone)}</a></td></tr>` : ""}
-        ${service ? `<tr style="background: #f2ede8;"><td style="padding: 8px 12px; font-weight: bold; vertical-align: top;">Service</td><td style="padding: 8px 12px;">${escapeHtml(service)}</td></tr>` : ""}
+        <tr>
+          <td style="padding: 8px 12px; font-weight: bold; vertical-align: top;">Phone</td>
+          <td style="padding: 8px 12px;"><a href="tel:${escapeHtml(phone)}">${escapeHtml(phone)}</a></td>
+        </tr>
+        ${service ? `<tr style="background: #F5ECD7;"><td style="padding: 8px 12px; font-weight: bold; vertical-align: top;">Service</td><td style="padding: 8px 12px;">${escapeHtml(service)}</td></tr>` : ""}
       </table>
-      <div style="margin-top: 20px; padding: 16px; background: #f2ede8; border-radius: 8px;">
+      <div style="margin-top: 20px; padding: 16px; background: #F5ECD7; border-radius: 8px;">
         <p style="margin: 0 0 4px; font-weight: bold;">Message</p>
         <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
       </div>
-      <p style="margin-top: 24px; font-size: 13px; color: #7a7068;">
-        Sent from the Sweepsless in Seattle website contact form.
+      <p style="margin-top: 16px; font-size: 12px; color: #5C5C5C;">
+        &#10003; Customer consented to receive emails, texts, or phone calls.
+      </p>
+      <p style="margin-top: 8px; font-size: 13px; color: #5C5C5C;">
+        Sent from the Sweepsless in Seattle website.
       </p>
     </div>
   `;
@@ -56,7 +67,7 @@ export async function sendQuoteRequest(
       from: `Sweepsless in Seattle <${EMAIL_FROM}>`,
       to: CONTACT_EMAIL,
       replyTo: email,
-      subject: `Quote request from ${name}${service ? ` — ${service}` : ""}`,
+      subject: `Pricing request from ${name}${service ? ` \u2014 ${service}` : ""}`,
       html: htmlBody,
     });
 
