@@ -9,6 +9,7 @@ import { services } from "@/content/site";
 import { JsonLd } from "@/components/JsonLd";
 import { serviceJsonLd } from "@/lib/json-ld";
 import { ServicePageClient } from "./client";
+import { ServiceGallery } from "@/components/ServiceGallery";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -35,6 +36,7 @@ export default async function ServicePage({ params }: Props) {
   const otherServices = services.filter((s) => s.id !== id);
   const hasAddOns = "addOns" in svc && svc.addOns;
   const hasBaseNote = "baseNote" in svc && svc.baseNote;
+  const hasGallery = "galleryImages" in svc && svc.galleryImages;
 
   return (
     <>
@@ -67,18 +69,27 @@ export default async function ServicePage({ params }: Props) {
               <ServicePageClient />
             </div>
             <div
-              className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-lg"
+              className="relative overflow-hidden rounded-2xl shadow-lg"
               data-aos="fade-left"
               data-aos-delay="120"
             >
-              <Image
-                src={svc.image}
-                alt={`${svc.detailName} cleaning service by Sweepsless in Seattle`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              {hasGallery ? (
+                <ServiceGallery
+                  images={svc.galleryImages}
+                  alt={`${svc.detailName} by Sweepsless in Seattle`}
+                />
+              ) : (
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src={svc.image}
+                    alt={`${svc.detailName} cleaning service by Sweepsless in Seattle`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                </div>
+              )}
             </div>
           </div>
         </section>

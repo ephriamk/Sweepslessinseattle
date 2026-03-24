@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F5EDE0;
+  --background: #FAF7F2;
   --foreground: #2F2B28;
 
   --sl-ink: #2F2B28;
   --sl-muted: #6B5E52;
-  --sl-wash: #EDE4D4;
-  --sl-border: #D4C9B5;
-  --sl-surface: #FAF5EC;
-  --sl-card: #FAF5EC;
+  --sl-wash: #F5F1EA;
+  --sl-border: #E0D8CC;
+  --sl-surface: #FFFFFF;
+  --sl-card: #FFFFFF;
   --sl-red: #C41E3A;
   --sl-accent: #9B1B30;
 }
@@ -31,12 +31,11 @@ html {
   .hero-fade-in,
   .hero-fade-in-delay,
   .hero-subtitle-roll,
+  .hero-cta-fade,
   .page-enter {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
-    letter-spacing: 0.25em !important;
   }
   .sparkle-star { display: none !important; }
   .success-ring,
@@ -74,7 +73,8 @@ body {
 
 /* ─── Swiper pagination ─── */
 .hero-testimonial-swiper .swiper-pagination-bullet,
-.reviews-swiper .swiper-pagination-bullet {
+.reviews-swiper .swiper-pagination-bullet,
+.service-gallery-swiper .swiper-pagination-bullet {
   background: rgba(196, 30, 58, 0.2);
   opacity: 1;
   width: 8px;
@@ -82,7 +82,8 @@ body {
   transition: background 0.3s, transform 0.3s;
 }
 .hero-testimonial-swiper .swiper-pagination-bullet-active,
-.reviews-swiper .swiper-pagination-bullet-active {
+.reviews-swiper .swiper-pagination-bullet-active,
+.service-gallery-swiper .swiper-pagination-bullet-active {
   background: var(--sl-red);
   transform: scale(1.4);
 }
@@ -153,14 +154,16 @@ body {
 
 /* ─── Fade-in-up for hero headline ─── */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .hero-fade-in {
-  animation: fade-in-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fade-in-up 1s ease-out 0.15s both;
+  will-change: opacity, transform;
 }
 .hero-fade-in-delay {
-  animation: fade-in-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  animation: fade-in-up 1s ease-out 0.35s both;
+  will-change: opacity, transform;
 }
 
 /* ─── Horizontal scroll snap (mobile services) ─── */
@@ -208,12 +211,11 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
-.sparkle-star:nth-child(1) { top: -8px; right: 5%; animation: sparkle-1 2.4s ease-in-out infinite; }
-.sparkle-star:nth-child(2) { top: 20%; right: -12px; animation: sparkle-2 3.1s ease-in-out 0.5s infinite; }
-.sparkle-star:nth-child(3) { bottom: 10%; left: -8px; animation: sparkle-1 2.8s ease-in-out 1s infinite; }
-.sparkle-star:nth-child(4) { bottom: -6px; right: 25%; animation: sparkle-2 2.2s ease-in-out 1.5s infinite; }
-.sparkle-star:nth-child(5) { top: 40%; right: 15%; animation: sparkle-1 3.5s ease-in-out 0.8s infinite; width: 8px; height: 8px; }
-
+.sparkle-star:nth-child(1) { top: -8px; right: 5%; animation: sparkle-1 2.4s ease-in-out 1.5s infinite; }
+.sparkle-star:nth-child(2) { top: 20%; right: -12px; animation: sparkle-2 3.1s ease-in-out 2.0s infinite; }
+.sparkle-star:nth-child(3) { bottom: 10%; left: -8px; animation: sparkle-1 2.8s ease-in-out 2.5s infinite; }
+.sparkle-star:nth-child(4) { bottom: -6px; right: 25%; animation: sparkle-2 2.2s ease-in-out 3.0s infinite; }
+.sparkle-star:nth-child(5) { top: 40%; right: 15%; animation: sparkle-1 3.5s ease-in-out 2.2s infinite; width: 8px; height: 8px; }
 /* ─── Form success animation ─── */
 @keyframes success-scale-in {
   from { opacity: 0; transform: scale(0.5); }
@@ -271,12 +273,14 @@ body {
 .success-sparkle-5 { animation: success-burst 0.6s ease-out 1.2s both; bottom: 15%; left: -6px; }
 .success-sparkle-6 { animation: success-burst 0.6s ease-out 1.08s both; top: 15%;   left: -10px; }
 
-/* ─── Subtitle letter spacing animation ─── */
-@keyframes subtitle-roll-in {
-  from { opacity: 0; letter-spacing: 0.5em; filter: blur(4px); }
-  to   { opacity: 1; letter-spacing: 0.25em; filter: blur(0); }
-}
+/* ─── Subtitle fade-in ─── */
 .hero-subtitle-roll {
-  animation: subtitle-roll-in 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.8s both;
-  letter-spacing: 0.25em;
+  animation: fade-in-up 1s ease-out 0.8s both;
+  will-change: opacity, transform;
+}
+
+/* ─── CTA fade-in ─── */
+.hero-cta-fade {
+  animation: fade-in-up 1s ease-out 1.1s both;
+  will-change: opacity, transform;
 }

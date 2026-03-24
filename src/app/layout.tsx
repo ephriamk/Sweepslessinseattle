@@ -44,10 +44,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: site.name,
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: site.name }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,

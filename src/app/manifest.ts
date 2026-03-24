@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       "Professional house cleaning in Woodinville, Kirkland, Bellevue, and the greater Eastside. Non-toxic, plant-based care. No contracts.",
     start_url: "/",
     display: "standalone",
-    background_color: "#F5EDE0",
+    background_color: "#FAF7F2",
     theme_color: "#C41E3A",
     icons: [
       {

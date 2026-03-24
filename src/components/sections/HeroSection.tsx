@@ -28,29 +28,31 @@ export function HeroSection() {
         <div className="relative flex min-h-[100svh] flex-col justify-center px-4">
           <div className="mx-auto w-full max-w-6xl">
             <div className="max-w-3xl">
-              {/* "Cleaning Made Charming" with sparkle stars */}
-              <div className="sparkle-container hero-fade-in">
+              {/* "Cleaning Made Charming" */}
+              <div className="sparkle-container">
                 <span aria-hidden className="sparkle-star" />
                 <span aria-hidden className="sparkle-star" />
                 <span aria-hidden className="sparkle-star" />
                 <span aria-hidden className="sparkle-star" />
                 <span aria-hidden className="sparkle-star" />
-                <p className="text-lg italic text-[var(--sl-red)] sm:text-xl">
-                  {hero.titleLine1}
-                </p>
-                <h1 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-wide text-[var(--background)] uppercase">
-                  {hero.titleAccent}
-                </h1>
+                <div className="hero-fade-in">
+                  <p className="text-lg italic text-[var(--sl-red)] sm:text-xl">
+                    {hero.titleLine1}
+                  </p>
+                  <h1 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-wide text-[var(--background)] uppercase">
+                    {hero.titleAccent}
+                  </h1>
+                </div>
               </div>
 
-              <div className="mt-8 h-px w-20 bg-[var(--sl-red)]" />
+              <div className="hero-fade-in-delay mt-8 h-px w-20 bg-[var(--sl-red)]" />
 
-              {/* Spaced-out subtitle with roll-in animation */}
-              <p className="hero-subtitle-roll mt-8 max-w-2xl font-[family-name:var(--font-display)] text-lg uppercase text-[var(--background)]/70 sm:text-xl md:text-2xl">
+              {/* Subtitle */}
+              <p className="hero-subtitle-roll mt-8 max-w-2xl font-[family-name:var(--font-display)] text-lg tracking-[0.25em] uppercase text-[var(--background)]/70 sm:text-xl md:text-2xl">
                 {hero.subtitle}
               </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="hero-cta-fade mt-10 flex flex-wrap items-center gap-4">
                 <Link
                   href="/get-pricing"
                   className="btn-arrow rounded-none border-2 border-[var(--sl-red)] bg-[var(--sl-red)] px-8 py-4 font-[family-name:var(--font-display)] text-base tracking-[0.15em] text-[var(--background)] uppercase transition hover:bg-transparent hover:text-[var(--sl-red)]"

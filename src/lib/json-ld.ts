@@ -11,7 +11,7 @@ const localBusiness = {
   url: BASE,
   telephone: site.phoneTel,
   email: site.email,
-  image: `${BASE}/og-image.png`,
+  image: `${BASE}/opengraph-image`,
   priceRange: "$$",
   areaServed: [
     "Kirkland, WA",

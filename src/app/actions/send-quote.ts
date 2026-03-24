@@ -5,7 +5,9 @@ export type QuoteFormState = {
   message: string;
 } | null;
 
-const WEB3FORMS_KEY = process.env.WEB3FORMS_KEY;
+/** Prefer server-only secret if set; else same key as client form (see QuoteForm). */
+const WEB3FORMS_KEY =
+  process.env.WEB3FORMS_KEY ?? process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 export async function sendQuoteRequest(
   _prev: QuoteFormState,
@@ -32,7 +34,7 @@ export async function sendQuoteRequest(
   }
 
   if (!WEB3FORMS_KEY) {
-    console.error("WEB3FORMS_KEY is not set in environment variables");
+    console.error("Web3Forms key missing: set WEB3FORMS_KEY or NEXT_PUBLIC_WEB3FORMS_KEY");
     return {
       success: false,
       message: "Form is not configured yet. Please call or email us directly at Sweepslessinseattle@gmail.com.",

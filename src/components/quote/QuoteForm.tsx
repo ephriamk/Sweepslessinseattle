@@ -73,7 +73,17 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
         }),
       });
 
-      const result = await res.json();
+      const contentType = res.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        setStatus({
+          success: false,
+          message:
+            "We couldn\u2019t reach the form service. Please call or email us directly at Sweepslessinseattle@gmail.com.",
+        });
+        return;
+      }
+
+      const result: { success?: boolean; message?: string } = await res.json();
 
       if (result.success) {
         formRef.current?.reset();
@@ -156,7 +166,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
           </option>
           {services.map((s) => (
             <option key={s.id} value={s.name}>
-              {s.detailName} ({s.subtitle})
+              {s.name}
             </option>
           ))}
           <option value="Not sure yet">Not sure yet</option>
