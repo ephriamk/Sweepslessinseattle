@@ -30,7 +30,7 @@ export default function ReviewsPage() {
               {curatedReviews.map((r, i) => (
                 <article
                   key={r.name}
-                  className="card-glow mb-6 break-inside-avoid rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-8"
+                  className="card-glow mb-6 break-inside-avoid rounded-none border border-[var(--sl-border)] bg-[var(--sl-card)] p-8"
                   data-aos="fade-up"
                   data-aos-delay={i * 60}
                 >
@@ -39,7 +39,7 @@ export default function ReviewsPage() {
                   </p>
                   <div className="mt-6 flex items-center gap-3 border-t border-[var(--sl-border)] pt-5">
                     <div
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--sl-ink)] font-[family-name:var(--font-display)] text-sm text-[var(--sl-red)]"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--sl-ink)] font-[family-name:var(--font-display)] text-sm text-[var(--sl-gold)]"
                       aria-hidden
                     >
                       {r.name.charAt(0)}

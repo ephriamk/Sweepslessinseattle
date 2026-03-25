@@ -8,106 +8,115 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { hero, trustBullets } from "@/content/site";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
+import { FloatingStars } from "@/components/FloatingElements";
 
 export function HeroSection() {
   const reducedMotion = useReducedMotion();
 
   return (
     <section id="hero" className="relative">
-      <div className="grain relative min-h-[100svh] overflow-hidden bg-[var(--sl-ink)]">
+      {/* ── Night-sky banner — full viewport, flex centered ── */}
+      <div className="grain relative min-h-[100svh] overflow-hidden night-sky flex flex-col justify-center px-6 py-20">
+        {/* Background image for visual texture */}
         <Image
           src={hero.videoPoster}
-          alt="A warm, beautifully styled living room with soft golden light"
+          alt=""
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-15 pointer-events-none"
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--sl-ink)]/60 via-transparent to-[var(--sl-ink)]" />
 
-        <div className="relative flex min-h-[100svh] flex-col justify-center px-4">
-          <div className="mx-auto w-full max-w-6xl">
-            <div className="max-w-3xl">
-              {/* "Cleaning Made Charming" */}
-              <div className="sparkle-container">
-                <span aria-hidden className="sparkle-star" />
-                <span aria-hidden className="sparkle-star" />
-                <span aria-hidden className="sparkle-star" />
-                <span aria-hidden className="sparkle-star" />
-                <span aria-hidden className="sparkle-star" />
-                <div className="hero-fade-in">
-                  <p className="text-lg italic text-[var(--sl-red)] sm:text-xl">
-                    {hero.titleLine1}
-                  </p>
-                  <h1 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-wide text-[var(--background)] uppercase">
-                    {hero.titleAccent}
-                  </h1>
-                </div>
-              </div>
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0C0A14]/80 via-[#14102A]/50 to-[var(--sl-night)] pointer-events-none" />
 
-              <div className="hero-fade-in-delay mt-8 h-px w-20 bg-[var(--sl-red)]" />
+        {/* Subtle twinkling stars */}
+        <FloatingStars count={8} />
 
-              {/* Subtitle */}
-              <p className="hero-subtitle-roll mt-8 max-w-2xl font-[family-name:var(--font-display)] text-lg tracking-[0.25em] uppercase text-[var(--background)]/70 sm:text-xl md:text-2xl">
-                {hero.subtitle}
-              </p>
+        {/* ── Content ── */}
+        <div className="relative z-10 mx-auto w-full max-w-5xl lg:max-w-3xl">
+          {/* Eyebrow — simple italic text */}
+          <p className="hero-fade-in italic text-lg text-[var(--sl-rose)] sm:text-xl">
+            {hero.titleLine1}
+          </p>
 
-              <div className="hero-cta-fade mt-10 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/get-pricing"
-                  className="btn-arrow rounded-none border-2 border-[var(--sl-red)] bg-[var(--sl-red)] px-8 py-4 font-[family-name:var(--font-display)] text-base tracking-[0.15em] text-[var(--background)] uppercase transition hover:bg-transparent hover:text-[var(--sl-red)]"
-                >
-                  {hero.cta} <span aria-hidden>&rarr;</span>
-                </Link>
-                <a
-                  href="#services"
-                  className="text-sm tracking-wide text-[var(--background)]/50 transition hover:text-[var(--background)]"
-                >
-                  Explore services
-                </a>
-              </div>
-            </div>
-
-            {/* Floating testimonial */}
-            <div className="mt-16 max-w-md lg:absolute lg:right-8 lg:bottom-32 lg:mt-0 xl:right-16">
-              <Swiper
-                modules={[Pagination, Autoplay]}
-                spaceBetween={24}
-                slidesPerView={1}
-                pagination={{ clickable: true }}
-                autoplay={
-                  reducedMotion
-                    ? false
-                    : { delay: 6000, disableOnInteraction: true }
-                }
-                className="hero-testimonial-swiper pb-8"
-              >
-                {hero.testimonials.map((t) => (
-                  <SwiperSlide key={t.author}>
-                    <div className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-                      <StarRow />
-                      <p className="mt-3 text-sm leading-[1.8] text-[var(--background)]/60">
-                        &ldquo;{t.quote}&rdquo;
-                      </p>
-                      <p className="mt-3 text-xs font-medium text-[var(--sl-red)]">
-                        &mdash; {t.author}
-                      </p>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+          {/* Main heading with sparkles */}
+          <div className="sparkle-container mt-2">
+            <span aria-hidden className="sparkle-star" />
+            <span aria-hidden className="sparkle-star" />
+            <span aria-hidden className="sparkle-star" />
+            <h1 className="hero-fade-in font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-wide text-[var(--sl-surface)] uppercase">
+              {hero.titleAccent}
+            </h1>
           </div>
+
+          {/* Gold ornamental divider */}
+          <div className="hero-fade-in-delay mt-4 flex items-center gap-3">
+            <span className="h-px w-10 bg-[var(--sl-gold)]" />
+            <span className="text-xs text-[var(--sl-gold)]" aria-hidden>&#10038;</span>
+            <span className="h-px w-10 bg-[var(--sl-gold)]" />
+          </div>
+
+          {/* Subtitle in script font */}
+          <p className="hero-subtitle-roll mt-4 max-w-md font-[family-name:var(--font-script)] font-bold text-2xl text-[var(--sl-rose)] sm:text-3xl">
+            {hero.subtitle}
+          </p>
+
+          {/* CTA row */}
+          <div className="hero-cta-fade mt-6 flex flex-wrap items-center gap-5">
+            <Link
+              href="/get-pricing"
+              className="btn-arrow border-2 border-[var(--sl-gold)] bg-[var(--sl-gold)] px-7 py-3 font-[family-name:var(--font-display)] text-sm tracking-[0.15em] text-[var(--sl-night)] uppercase transition hover:bg-transparent hover:text-[var(--sl-gold)]"
+            >
+              {hero.cta} <span aria-hidden>&rarr;</span>
+            </Link>
+            <a
+              href="#services"
+              className="text-sm tracking-wide text-white/50 transition hover:text-white/80"
+            >
+              Explore services
+            </a>
+          </div>
+        </div>
+
+        {/* ── Testimonial carousel — desktop only, bottom-right ── */}
+        <div className="hidden lg:block absolute right-8 bottom-20 z-10 w-80 xl:right-16">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={0}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            autoplay={
+              reducedMotion
+                ? false
+                : { delay: 6000, disableOnInteraction: true }
+            }
+            className="hero-testimonial-swiper pb-8"
+          >
+            {hero.testimonials.map((t) => (
+              <SwiperSlide key={t.author}>
+                <blockquote className="bg-white/[0.07] backdrop-blur-sm border border-white/10 p-5">
+                  <StarRow />
+                  <p className="mt-2 text-sm leading-relaxed text-white/60 italic">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <footer className="mt-3 text-xs font-medium text-[var(--sl-gold)]">
+                    &mdash; {t.author}
+                  </footer>
+                </blockquote>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
 
-      {/* Trust strip */}
-      <div className="border-t border-[var(--sl-border)] bg-[var(--background)]">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-4 py-8 sm:grid-cols-3 md:grid-cols-5 md:gap-6">
+      {/* ── Trust strip ── */}
+      <div className="border-t-2 border-[var(--sl-gold)]/20 bg-[var(--background)]">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 py-6 sm:grid-cols-3 md:grid-cols-5 md:gap-6">
           {trustBullets.map((b) => (
             <div key={b.id} className="flex items-start gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--sl-red)]/10 text-xs text-[var(--sl-red)]">
-                &#10003;
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--sl-gold)]/10 text-xs text-[var(--sl-gold)]">
+                &#10038;
               </span>
               <div className="min-w-0">
                 <span className="block text-sm font-bold leading-snug text-[var(--sl-ink)]">
@@ -134,7 +143,7 @@ function StarRow() {
             <path
               d="M147.17,629.89,150.1,638.9h9.478l-7.668,5.571,2.929,9.014-7.668-5.571-7.668,5.571,2.929-9.014-7.668-5.571h9.478Z"
               transform="translate(-134.763 -629.89)"
-              fill="var(--sl-red)"
+              fill="var(--sl-gold)"
             />
           </svg>
         </li>

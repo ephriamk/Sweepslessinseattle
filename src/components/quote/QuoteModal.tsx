@@ -18,10 +18,10 @@ export function QuoteModal() {
       <Dialog.Portal>
         <Dialog.Overlay className="data-[state=open]:opacity-100 data-[state=closed]:opacity-0 fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-200" />
         <Dialog.Content
-          className="data-[state=open]:opacity-100 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=closed]:scale-95 fixed top-1/2 left-1/2 z-50 max-h-[90vh] w-[min(100vw-2rem,36rem)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-surface)] p-6 shadow-xl outline-none transition-[opacity,transform] duration-200"
+          className="data-[state=open]:opacity-100 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=closed]:scale-95 fixed top-1/2 left-1/2 z-50 max-h-[90vh] w-[min(100vw-2rem,36rem)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-none border border-[var(--sl-border)] bg-[var(--sl-surface)] p-6 shadow-xl outline-none transition-[opacity,transform] duration-200"
           onOpenAutoFocus={(e) => e.preventDefault()}
         >
-          <Dialog.Title className="font-[family-name:var(--font-display)] text-2xl tracking-wider text-[var(--sl-red)] uppercase">
+          <Dialog.Title className="font-[family-name:var(--font-display)] text-2xl tracking-wider text-[var(--sl-gold)] uppercase">
             Get Pricing
           </Dialog.Title>
           <Dialog.Description className="mt-2 text-sm leading-relaxed text-[var(--sl-muted)]">
@@ -38,14 +38,14 @@ export function QuoteModal() {
             Prefer to talk?{" "}
             <a
               href={`tel:${site.phoneTel}`}
-              className="font-medium text-[var(--sl-red)] hover:underline"
+              className="font-medium text-[var(--sl-gold)] hover:underline"
             >
               Call {site.phoneDisplay}
             </a>{" "}
             or{" "}
             <a
               href={`mailto:${site.email}?subject=Pricing%20request`}
-              className="font-medium text-[var(--sl-red)] hover:underline"
+              className="font-medium text-[var(--sl-gold)] hover:underline"
             >
               email us
             </a>

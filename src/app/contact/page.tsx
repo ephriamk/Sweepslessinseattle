@@ -40,43 +40,43 @@ export default function ContactPage() {
               <div data-aos="fade-left" data-aos-delay="120" className="space-y-6">
                 <a
                   href={`tel:${site.phoneTel}`}
-                  className="card-glow flex items-center gap-4 rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-6 transition hover:border-[var(--sl-red)]/30"
+                  className="card-glow flex items-center gap-4 rounded-none border border-[var(--sl-border)] bg-[var(--sl-card)] p-6 transition hover:border-[var(--sl-gold)]/30"
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--sl-red)]/10 text-lg text-[var(--sl-red)]">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--sl-gold)]/10 text-lg text-[var(--sl-gold)]">
                     &#9742;
                   </span>
                   <div>
                     <span className="block text-sm font-bold text-[var(--sl-ink)]">
                       Call / Text
                     </span>
-                    <span className="text-base text-[var(--sl-red)]">
+                    <span className="text-base text-[var(--sl-gold)]">
                       {site.phoneDisplay}
                     </span>
                   </div>
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="card-glow flex items-center gap-4 rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-6 transition hover:border-[var(--sl-red)]/30"
+                  className="card-glow flex items-center gap-4 rounded-none border border-[var(--sl-border)] bg-[var(--sl-card)] p-6 transition hover:border-[var(--sl-gold)]/30"
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--sl-red)]/10 text-lg text-[var(--sl-red)]">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--sl-gold)]/10 text-lg text-[var(--sl-gold)]">
                     &#9993;
                   </span>
                   <div>
                     <span className="block text-sm font-bold text-[var(--sl-ink)]">
                       Questions?
                     </span>
-                    <span className="text-base text-[var(--sl-red)]">
+                    <span className="text-base text-[var(--sl-gold)]">
                       {site.email}
                     </span>
                   </div>
                 </a>
 
-                <div className="rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-6">
+                <div className="rounded-none border border-[var(--sl-border)] bg-[var(--sl-card)] p-6">
                   <p className="text-sm font-bold text-[var(--sl-ink)]">Hours</p>
                   <p className="mt-2 text-sm text-[var(--sl-muted)]">{site.hours}</p>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-6">
+                <div className="rounded-none border border-[var(--sl-border)] bg-[var(--sl-card)] p-6">
                   <p className="text-sm font-bold text-[var(--sl-ink)]">Address</p>
                   {site.addresses.map((a) => (
                     <p key={a.line1} className="mt-2 text-sm text-[var(--sl-muted)]">
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                <div className="rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-6">
+                <div className="rounded-none border border-[var(--sl-border)] bg-[var(--sl-card)] p-6">
                   <p className="text-sm font-bold text-[var(--sl-ink)]">Service area</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {serviceAreas.map((area) => (

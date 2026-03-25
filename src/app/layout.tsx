@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Bebas_Neue, Great_Vibes, Geist_Mono } from "next/font/google";
+import { Libre_Baskerville, Bebas_Neue, Dancing_Script, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { JsonLd } from "@/components/JsonLd";
@@ -19,10 +19,10 @@ const bebasNeue = Bebas_Neue({
   weight: "400",
 });
 
-const greatVibes = Great_Vibes({
+const dancingScript = Dancing_Script({
   variable: "--font-script",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${libreBaskerville.variable} ${bebasNeue.variable} ${greatVibes.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${libreBaskerville.variable} ${bebasNeue.variable} ${dancingScript.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <JsonLd data={localBusinessJsonLd()} />

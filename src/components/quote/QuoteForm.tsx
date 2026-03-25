@@ -4,7 +4,7 @@ import { useState, useRef, useCallback } from "react";
 import { services, site } from "@/content/site";
 
 const inputClass =
-  "w-full rounded-lg border border-[var(--sl-border)] bg-[var(--sl-surface)] px-4 py-3 text-sm text-[var(--foreground)] placeholder:text-[var(--sl-muted)] outline-none transition focus:border-[var(--sl-red)] focus:ring-1 focus:ring-[var(--sl-red)]/30";
+  "w-full rounded-lg border border-[var(--sl-border)] bg-[var(--sl-surface)] px-4 py-3 text-sm text-[var(--foreground)] placeholder:text-[var(--sl-muted)] outline-none transition focus:border-[var(--sl-gold)] focus:ring-1 focus:ring-[var(--sl-gold)]/30";
 
 type FormStatus = { success: boolean; message: string } | null;
 
@@ -107,7 +107,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="quote-name" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-          Name <span className="text-[var(--sl-red)]">*</span>
+          Name <span className="text-[var(--sl-gold)]">*</span>
         </label>
         <input
           id="quote-name"
@@ -123,7 +123,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="quote-phone" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-            Phone <span className="text-[var(--sl-red)]">*</span>
+            Phone <span className="text-[var(--sl-gold)]">*</span>
           </label>
           <input
             id="quote-phone"
@@ -137,7 +137,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
         </div>
         <div>
           <label htmlFor="quote-email" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-            Email <span className="text-[var(--sl-red)]">*</span>
+            Email <span className="text-[var(--sl-gold)]">*</span>
           </label>
           <input
             id="quote-email"
@@ -175,7 +175,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
 
       <div>
         <label htmlFor="quote-message" className="mb-1.5 block text-sm font-medium text-[var(--sl-ink)]">
-          Message <span className="text-[var(--sl-red)]">*</span>
+          Message <span className="text-[var(--sl-gold)]">*</span>
         </label>
         <textarea
           id="quote-message"
@@ -193,17 +193,17 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
           name="consent"
           type="checkbox"
           required
-          className="mt-1 h-4 w-4 rounded border-[var(--sl-border)] accent-[var(--sl-red)]"
+          className="mt-1 h-4 w-4 rounded border-[var(--sl-border)] accent-[var(--sl-gold)]"
         />
         <label htmlFor="quote-consent" className="text-xs leading-relaxed text-[var(--sl-muted)]">
-          I agree to receive emails, texts or phone calls about the services I am inquiring about <span className="text-[var(--sl-red)]">*</span>
+          I agree to receive emails, texts or phone calls about the services I am inquiring about <span className="text-[var(--sl-gold)]">*</span>
         </label>
       </div>
 
       {status && !status.success && (
         <div
           role="alert"
-          className="rounded-lg border border-[var(--sl-red)]/20 bg-[var(--sl-red)]/5 px-4 py-3 text-sm text-[var(--sl-red)]"
+          className="rounded-lg border border-[var(--sl-gold)]/20 bg-[var(--sl-gold)]/5 px-4 py-3 text-sm text-[var(--sl-gold)]"
         >
           {status.message}
         </div>
@@ -212,7 +212,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
       <button
         type="submit"
         disabled={isPending}
-        className="btn-arrow w-full justify-center border-2 border-[var(--sl-red)] bg-[var(--sl-red)] px-6 py-3.5 font-[family-name:var(--font-display)] text-base tracking-[0.15em] text-[var(--background)] uppercase transition hover:bg-transparent hover:text-[var(--sl-red)] disabled:opacity-60"
+        className="btn-arrow w-full justify-center border-2 border-[var(--sl-gold)] bg-[var(--sl-gold)] px-6 py-3.5 font-[family-name:var(--font-display)] text-base tracking-[0.15em] text-[var(--sl-night)] uppercase transition hover:bg-transparent hover:text-[var(--sl-gold)] disabled:opacity-60"
       >
         {isPending ? "Sending\u2026" : "Submit"}
       </button>
@@ -230,13 +230,13 @@ function SuccessView({ onReset }: { onReset: () => void }) {
             className="success-circle"
             cx="26" cy="26" r="24"
             fill="none"
-            stroke="var(--sl-red)"
+            stroke="var(--sl-gold)"
             strokeWidth="2"
           />
           <path
             className="success-tick"
             fill="none"
-            stroke="var(--sl-red)"
+            stroke="var(--sl-gold)"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -260,7 +260,7 @@ function SuccessView({ onReset }: { onReset: () => void }) {
       </p>
       <p className="success-text-delay mt-2 text-sm text-[var(--sl-muted)]">
         Questions in the meantime? Call us at{" "}
-        <a href={`tel:${site.phoneTel}`} className="font-medium text-[var(--sl-red)] hover:underline">
+        <a href={`tel:${site.phoneTel}`} className="font-medium text-[var(--sl-gold)] hover:underline">
           {site.phoneDisplay}
         </a>
       </p>
@@ -268,7 +268,7 @@ function SuccessView({ onReset }: { onReset: () => void }) {
       <button
         type="button"
         onClick={onReset}
-        className="success-text-delay mt-8 text-sm font-bold tracking-[0.1em] text-[var(--sl-red)] uppercase transition hover:text-[var(--sl-accent)]"
+        className="success-text-delay mt-8 text-sm font-bold tracking-[0.1em] text-[var(--sl-gold)] uppercase transition hover:text-[var(--sl-accent)]"
       >
         Submit another request
       </button>

@@ -53,10 +53,8 @@ export default function AboutPage() {
         <section className="bg-[var(--sl-wash)] py-24 md:py-36">
           <div className="mx-auto max-w-5xl px-4">
             <header className="mb-14 max-w-2xl" data-aos="fade-up">
-              <p className="text-xs font-bold tracking-[0.25em] text-[var(--sl-red)] uppercase">
-                What we believe
-              </p>
-              <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl leading-[1.0] tracking-wider text-[var(--sl-ink)] uppercase md:text-5xl">
+              <span className="retro-eyebrow">What we believe</span>
+              <h2 className="mt-6 font-[family-name:var(--font-display)] text-4xl leading-[1.0] tracking-wider text-[var(--sl-ink)] uppercase md:text-5xl">
                 Our values
               </h2>
             </header>
@@ -64,11 +62,11 @@ export default function AboutPage() {
               {aboutPage.values.map((v, i) => (
                 <article
                   key={v.title}
-                  className="card-glow rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-8"
+                  className="retro-card rounded-none p-8"
                   data-aos="fade-up"
                   data-aos-delay={i * 100}
                 >
-                  <h3 className="font-[family-name:var(--font-display)] text-xl tracking-wide text-[var(--sl-red)] uppercase">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl tracking-wide text-[var(--sl-gold)] uppercase">
                     {v.title}
                   </h3>
                   <p className="mt-4 text-[15px] leading-[1.85] text-[var(--foreground)]">
@@ -83,10 +81,8 @@ export default function AboutPage() {
         <section className="bg-[var(--background)] py-24 md:py-36">
           <div className="mx-auto max-w-5xl px-4">
             <header className="mb-14 max-w-2xl" data-aos="fade-up">
-              <p className="text-xs font-bold tracking-[0.25em] text-[var(--sl-red)] uppercase">
-                {processSection.eyebrow}
-              </p>
-              <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl leading-[1.0] tracking-wider text-[var(--sl-ink)] uppercase md:text-5xl">
+              <span className="retro-eyebrow">{processSection.eyebrow}</span>
+              <h2 className="mt-6 font-[family-name:var(--font-display)] text-4xl leading-[1.0] tracking-wider text-[var(--sl-ink)] uppercase md:text-5xl">
                 {processSection.title}
               </h2>
               <p className="mt-6 text-base leading-[1.85] text-[var(--sl-muted)]">
@@ -97,11 +93,11 @@ export default function AboutPage() {
               {processSection.steps.map((step, i) => (
                 <li
                   key={step.title}
-                  className="card-glow rounded-2xl border border-[var(--sl-border)] bg-[var(--sl-card)] p-8"
+                  className="retro-card rounded-none p-8"
                   data-aos="fade-up"
                   data-aos-delay={i * 80}
                 >
-                  <span className="font-[family-name:var(--font-display)] text-4xl text-[var(--sl-red)]/20">
+                  <span className="font-[family-name:var(--font-display)] text-4xl text-[var(--sl-gold)]/20">
                     {i + 1}
                   </span>
                   <h3 className="mt-3 font-[family-name:var(--font-display)] text-lg tracking-wide text-[var(--sl-ink)] uppercase">

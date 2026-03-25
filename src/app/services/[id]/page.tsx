@@ -49,12 +49,12 @@ export default async function ServicePage({ params }: Props) {
           <div className="mx-auto grid max-w-5xl gap-12 px-4 lg:grid-cols-2 lg:items-start">
             <div data-aos="fade-right">
               {hasBaseNote && (
-                <div className="mb-8 inline-flex items-center gap-2 rounded-lg border border-[var(--sl-red)]/20 bg-[var(--sl-red)]/5 px-4 py-2.5">
-                  <span className="text-xs text-[var(--sl-red)]">&#10003;</span>
-                  <span className="text-sm font-medium text-[var(--sl-red)]">{svc.baseNote}</span>
+                <div className="mb-8 inline-flex items-center gap-2 rounded-lg border border-[var(--sl-gold)]/20 bg-[var(--sl-gold)]/5 px-4 py-2.5">
+                  <span className="text-xs text-[var(--sl-gold)]">&#10003;</span>
+                  <span className="text-sm font-medium text-[var(--sl-gold)]">{svc.baseNote}</span>
                 </div>
               )}
-              <blockquote className="border-l-2 border-[var(--sl-red)] pl-5">
+              <blockquote className="border-l-2 border-[var(--sl-gold)] pl-5">
                 <p className="text-lg italic leading-relaxed text-[var(--foreground)]">
                   &ldquo;{svc.quote}&rdquo;
                 </p>
@@ -69,7 +69,7 @@ export default async function ServicePage({ params }: Props) {
               <ServicePageClient />
             </div>
             <div
-              className="relative overflow-hidden rounded-2xl shadow-lg"
+              className="relative overflow-hidden rounded-none shadow-lg"
               data-aos="fade-left"
               data-aos-delay="120"
             >
@@ -110,7 +110,7 @@ export default async function ServicePage({ params }: Props) {
                   data-aos="fade-up"
                   data-aos-delay={i * 60}
                 >
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--sl-red)]/10 text-xs text-[var(--sl-red)]">
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--sl-gold)]/10 text-xs text-[var(--sl-gold)]">
                     &#10003;
                   </span>
                   {item}
@@ -121,10 +121,10 @@ export default async function ServicePage({ params }: Props) {
         </section>
 
         {hasAddOns && (
-          <section className="grain relative overflow-hidden bg-[var(--sl-ink)] py-24 md:py-36">
+          <section className="grain relative overflow-hidden night-sky py-24 md:py-36">
             <div className="relative mx-auto max-w-5xl px-4">
               <h2
-                className="font-[family-name:var(--font-display)] text-3xl tracking-wider text-[var(--sl-red)] uppercase md:text-4xl"
+                className="font-[family-name:var(--font-display)] text-3xl tracking-wider text-[var(--sl-gold)] uppercase md:text-4xl"
                 data-aos="fade-up"
               >
                 The &ldquo;Magic&rdquo; Add-Ons
@@ -136,11 +136,11 @@ export default async function ServicePage({ params }: Props) {
                 {svc.addOns.map((addon, i) => (
                   <article
                     key={addon.name}
-                    className="card-glow rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm"
+                    className="card-glow rounded-none border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm"
                     data-aos="fade-up"
                     data-aos-delay={i * 100}
                   >
-                    <h3 className="font-[family-name:var(--font-display)] text-xl tracking-wide text-[var(--sl-red)] uppercase">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl tracking-wide text-[var(--sl-gold)] uppercase">
                       {addon.name}
                     </h3>
                     <p className="mt-4 text-[15px] leading-[1.85] text-[var(--background)]/60">
@@ -166,7 +166,7 @@ export default async function ServicePage({ params }: Props) {
                 <Link
                   key={s.id}
                   href={s.slug}
-                  className="card-glow group relative overflow-hidden rounded-2xl border border-[var(--sl-border)]"
+                  className="card-glow group relative overflow-hidden rounded-none border border-[var(--sl-border)]"
                   data-aos="fade-up"
                   data-aos-delay={i * 80}
                 >
@@ -180,7 +180,7 @@ export default async function ServicePage({ params }: Props) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--sl-ink)]/80 to-transparent" />
                     <div className="absolute right-0 bottom-0 left-0 p-6">
-                      <p className="text-xs font-bold tracking-[0.2em] text-[var(--sl-red)] uppercase">
+                      <p className="text-xs font-bold tracking-[0.2em] text-[var(--sl-gold)] uppercase">
                         {s.subtitle}
                       </p>
                       <h3 className="mt-1 font-[family-name:var(--font-display)] text-xl tracking-wide text-[var(--background)] uppercase">
