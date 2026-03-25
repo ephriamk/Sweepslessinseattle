@@ -52,7 +52,7 @@ export function FamilyBandSection() {
                 href="/about"
                 className="text-sm font-bold tracking-[0.1em] text-white/50 uppercase transition hover:text-white"
               >
-                Our story
+                Testing
               </Link>
             </div>
           </div>
