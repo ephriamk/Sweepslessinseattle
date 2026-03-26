@@ -42,16 +42,14 @@ export function HeroSection() {
             aria-hidden
           >
             <video
+              src="/space-needle-video.webm"
               autoPlay
               loop
               muted
               playsInline
               className="h-full w-full object-contain mix-blend-screen opacity-25"
               style={{ filter: "contrast(3) brightness(0.8)" }}
-            >
-              <source src="/space-needle-video.webm" type="video/webm" />
-              <source src="/space-needle-video.mov" type="video/quicktime" />
-            </video>
+            />
           </div>
           {/* Eyebrow — simple italic text */}
           <p className="hero-fade-in italic text-lg text-[var(--sl-rose)] sm:text-xl drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
