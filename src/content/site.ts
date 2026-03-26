@@ -58,7 +58,7 @@ export const hero = {
 export const trustBullets = [
   { id: "contracts", label: "No contracts", short: "Book on your terms" },
   { id: "schedule", label: "Flexible scheduling", short: "We adapt when life shifts" },
-  { id: "custom", label: "Non-toxic products", short: "Plant-based care" },
+  { id: "custom", label: "Non-toxic products", short: "Plant-based & pet-safe care" },
   { id: "team", label: "Vetted employees", short: "Trained, insured teams" },
   { id: "happy", label: "Satisfaction promise", short: "We make it right" },
 ] as const;
@@ -76,8 +76,8 @@ export const differenceCards = [
   },
   {
     id: "nontoxic",
-    title: "Non-toxic, plant-based",
-    body: "No weepy toxic fumes. Our cleaning products are plant-based and EPA-approved, because your home should feel like magic\u2014not a chemistry lab.",
+    title: "Non-toxic, plant-based & pet-safe",
+    body: "No weepy toxic fumes. Our cleaning products are plant-based, EPA-approved, and safe for your furry family members\u2014because your home should feel like magic, not a chemistry lab.",
   },
   {
     id: "team",

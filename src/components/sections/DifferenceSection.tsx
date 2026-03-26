@@ -41,11 +41,11 @@ export function DifferenceSection() {
               data-aos-duration="700"
             >
               {card.id === "contracts" ? (
-                <Image src="/no-contracts-icon.svg" alt="" width={72} height={72} className="mb-4" aria-hidden />
+                <Image src="/no-contracts-icon.svg" alt="" width={72} height={72} className="mb-4 w-auto h-auto" aria-hidden />
               ) : card.id === "schedule" ? (
-                <Image src="/schedule-icon.svg" alt="" width={72} height={72} className="mb-4" aria-hidden />
+                <Image src="/schedule-icon.svg" alt="" width={72} height={72} className="mb-4 w-auto h-auto" aria-hidden />
               ) : card.id === "nontoxic" ? (
-                <Image src="/plant-icon.svg" alt="" width={72} height={72} className="mb-4" aria-hidden />
+                <Image src="/plant-icon.svg" alt="" width={72} height={72} className="mb-4 w-auto h-auto" aria-hidden />
               ) : (
                 <span className="mb-4 block text-2xl text-[var(--sl-gold)]/40" aria-hidden dangerouslySetInnerHTML={{ __html: cardIcons[i] }} />
               )}
@@ -75,7 +75,7 @@ export function DifferenceSection() {
                   alt=""
                   width={56}
                   height={56}
-                  className="shrink-0"
+                  className="shrink-0 w-auto h-auto"
                   aria-hidden
                 />
               ) : card.id === "happy" ? (
@@ -84,7 +84,7 @@ export function DifferenceSection() {
                   alt=""
                   width={56}
                   height={56}
-                  className="shrink-0"
+                  className="shrink-0 w-auto h-auto"
                   aria-hidden
                 />
               ) : (

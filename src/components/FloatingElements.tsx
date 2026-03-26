@@ -15,7 +15,7 @@ export function FloatingStars({ count = 12 }: { count?: number }) {
   }));
 
   return (
-    <>
+    <div className="absolute inset-0 pointer-events-none" aria-hidden>
       {stars.map((s) => (
         <span
           key={s.id}
@@ -28,10 +28,9 @@ export function FloatingStars({ count = 12 }: { count?: number }) {
             ["--dur" as string]: s.dur,
             ["--delay" as string]: s.delay,
           }}
-          aria-hidden
         />
       ))}
-    </>
+    </div>
   );
 }
 
@@ -46,7 +45,7 @@ export function FloatingHearts({ count = 5 }: { count?: number }) {
   }));
 
   return (
-    <>
+    <div className="absolute inset-0 pointer-events-none" aria-hidden>
       {hearts.map((h) => (
         <span
           key={h.id}
@@ -58,12 +57,11 @@ export function FloatingHearts({ count = 5 }: { count?: number }) {
             ["--dur" as string]: h.dur,
             ["--delay" as string]: h.delay,
           }}
-          aria-hidden
         >
           &#9829;
         </span>
       ))}
-    </>
+    </div>
   );
 }
 

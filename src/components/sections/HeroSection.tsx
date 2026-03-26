@@ -31,10 +31,24 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0C0A14]/80 via-[#14102A]/50 to-[var(--sl-night)] pointer-events-none" />
 
         {/* Subtle twinkling stars */}
-        <FloatingStars count={8} />
+        <FloatingStars count={25} />
 
         {/* ── Content ── */}
         <div className="relative z-10 mx-auto w-full max-w-5xl lg:max-w-3xl">
+          {/* Space Needle — left of content, full height */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div
+            className="absolute right-0 top-0 h-full w-[150px] needle-fade opacity-15 sm:right-auto sm:-left-[120px] sm:w-[200px]"
+            aria-hidden
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/space-needle.svg"
+              alt=""
+              className="h-full w-full"
+              style={{ objectFit: "fill" }}
+            />
+          </div>
           {/* Eyebrow — simple italic text */}
           <p className="hero-fade-in italic text-lg text-[var(--sl-rose)] sm:text-xl">
             {hero.titleLine1}
@@ -42,6 +56,12 @@ export function HeroSection() {
 
           {/* Main heading with sparkles */}
           <div className="sparkle-container mt-2">
+            <span aria-hidden className="sparkle-star" />
+            <span aria-hidden className="sparkle-star" />
+            <span aria-hidden className="sparkle-star" />
+            <span aria-hidden className="sparkle-star" />
+            <span aria-hidden className="sparkle-star" />
+            <span aria-hidden className="sparkle-star" />
             <span aria-hidden className="sparkle-star" />
             <span aria-hidden className="sparkle-star" />
             <span aria-hidden className="sparkle-star" />
