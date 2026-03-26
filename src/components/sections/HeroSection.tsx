@@ -38,19 +38,23 @@ export function HeroSection() {
           {/* Space Needle — left of content, full height */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <div
-            className="absolute right-0 top-0 h-full w-[150px] needle-fade opacity-15 sm:right-auto sm:-left-[120px] sm:w-[200px]"
+            className="absolute right-0 top-0 h-full w-[350px] needle-fade sm:right-auto sm:-left-[50px] sm:w-[600px]"
             aria-hidden
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/space-needle.svg"
-              alt=""
-              className="h-full w-full"
-              style={{ objectFit: "fill" }}
-            />
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-contain mix-blend-screen opacity-25"
+              style={{ filter: "contrast(3) brightness(0.8)" }}
+            >
+              <source src="/space-needle-video.webm" type="video/webm" />
+              <source src="/space-needle-video.mov" type="video/quicktime" />
+            </video>
           </div>
           {/* Eyebrow — simple italic text */}
-          <p className="hero-fade-in italic text-lg text-[var(--sl-rose)] sm:text-xl">
+          <p className="hero-fade-in italic text-lg text-[var(--sl-rose)] sm:text-xl drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
             {hero.titleLine1}
           </p>
 
@@ -65,7 +69,7 @@ export function HeroSection() {
             <span aria-hidden className="sparkle-star" />
             <span aria-hidden className="sparkle-star" />
             <span aria-hidden className="sparkle-star" />
-            <h1 className="hero-fade-in font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-wide text-[var(--sl-surface)] uppercase">
+            <h1 className="hero-fade-in font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-wide text-[var(--sl-surface)] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" style={{ WebkitTextStroke: "1px rgba(0,0,0,0.3)" }}>
               {hero.titleAccent}
             </h1>
           </div>
@@ -78,7 +82,7 @@ export function HeroSection() {
           </div>
 
           {/* Subtitle in script font */}
-          <p className="hero-subtitle-roll mt-4 max-w-md font-[family-name:var(--font-script)] font-bold text-2xl text-[var(--sl-rose)] sm:text-3xl">
+          <p className="hero-subtitle-roll mt-4 max-w-md font-[family-name:var(--font-script)] font-bold text-2xl text-[var(--sl-gold)] sm:text-3xl" style={{ WebkitTextStroke: "0.5px var(--sl-gold)", textShadow: "0 0 10px rgba(197,153,62,0.4), 0 2px 4px rgba(0,0,0,0.8)" }}>
             {hero.subtitle}
           </p>
 
