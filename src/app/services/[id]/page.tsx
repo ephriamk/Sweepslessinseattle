@@ -37,6 +37,7 @@ export default async function ServicePage({ params }: Props) {
   const hasAddOns = "addOns" in svc && svc.addOns;
   const hasBaseNote = "baseNote" in svc && svc.baseNote;
   const hasGallery = "galleryImages" in svc && svc.galleryImages;
+  const showQuote = svc.id !== "destiny" && svc.id !== "million-things" && svc.id !== "observation-deck";
 
   return (
     <>
@@ -54,16 +55,25 @@ export default async function ServicePage({ params }: Props) {
                   <span className="text-sm font-medium text-[var(--sl-gold)]">{svc.baseNote}</span>
                 </div>
               )}
-              <blockquote className="border-l-2 border-[var(--sl-gold)] pl-5">
-                <p className="text-lg italic leading-relaxed text-[var(--foreground)]">
-                  &ldquo;{svc.quote}&rdquo;
-                </p>
-                <cite className="mt-3 block text-sm not-italic text-[var(--sl-muted)]">
-                  &mdash; {svc.quoteAttr}
-                </cite>
-              </blockquote>
 
-              <p className="mt-10 text-base leading-[1.9] text-[var(--foreground)]">
+              {showQuote && (
+                <blockquote className="border-l-2 border-[var(--sl-gold)] pl-5">
+                  <p className="text-lg italic leading-relaxed text-[var(--foreground)]">
+                    &ldquo;{svc.quote}&rdquo;
+                  </p>
+                  <cite className="mt-3 block text-sm not-italic text-[var(--sl-muted)]">
+                    &mdash; {svc.quoteAttr}
+                  </cite>
+                </blockquote>
+              )}
+
+              {!showQuote && (
+                <h2 className="font-[family-name:var(--font-display)] text-2xl tracking-wider text-[var(--sl-ink)] uppercase md:text-3xl">
+                  {svc.subtitle}
+                </h2>
+              )}
+
+              <p className={`${showQuote ? "mt-10" : "mt-6"} text-base leading-[1.9] text-[var(--foreground)]`}>
                 {svc.longDescription}
               </p>
               <ServicePageClient />

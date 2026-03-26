@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageHero } from "@/components/layout/PageHero";
@@ -30,6 +31,17 @@ export default function GetPricingPage() {
               </div>
 
               <div data-aos="fade-left" data-aos-delay="120" className="space-y-6">
+                {/* Sleepless in Seattle illustration */}
+                <div className="relative overflow-hidden rounded-sm border border-[var(--sl-border)]">
+                  <Image
+                    src="/radio-call.png"
+                    alt="Sleepless in Seattle inspired illustration — father and son on the phone"
+                    width={600}
+                    height={400}
+                    className="w-full object-cover"
+                  />
+                </div>
+
                 <a
                   href={`tel:${site.phoneTel}`}
                   className="card-glow flex items-center gap-4 rounded-none border border-[var(--sl-border)] bg-[var(--sl-card)] p-6 transition hover:border-[var(--sl-gold)]/30"

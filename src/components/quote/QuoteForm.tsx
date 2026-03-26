@@ -166,7 +166,7 @@ export function QuoteForm({ onSuccess }: { onSuccess?: () => void }) {
           </option>
           {services.map((s) => (
             <option key={s.id} value={s.name}>
-              {s.name}
+              {s.detailName} ({s.name})
             </option>
           ))}
           <option value="Not sure yet">Not sure yet</option>

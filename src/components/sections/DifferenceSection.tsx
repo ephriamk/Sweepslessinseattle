@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { differenceCards } from "@/content/site";
 import { OrnamentDivider } from "@/components/FloatingElements";
 
@@ -39,14 +40,15 @@ export function DifferenceSection() {
               data-aos-delay={i * 120}
               data-aos-duration="700"
             >
-              <span
-                className="mb-4 block text-2xl text-[var(--sl-gold)]/40"
-                aria-hidden
-                dangerouslySetInnerHTML={{ __html: cardIcons[i] }}
-              />
-              <span className="mb-2 block font-[family-name:var(--font-display)] text-5xl text-[var(--sl-gold)]/15 md:text-6xl">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              {card.id === "contracts" ? (
+                <Image src="/no-contracts-icon.svg" alt="" width={72} height={72} className="mb-4" aria-hidden />
+              ) : card.id === "schedule" ? (
+                <Image src="/schedule-icon.svg" alt="" width={72} height={72} className="mb-4" aria-hidden />
+              ) : card.id === "nontoxic" ? (
+                <Image src="/plant-icon.svg" alt="" width={72} height={72} className="mb-4" aria-hidden />
+              ) : (
+                <span className="mb-4 block text-2xl text-[var(--sl-gold)]/40" aria-hidden dangerouslySetInnerHTML={{ __html: cardIcons[i] }} />
+              )}
               <h3 className="font-[family-name:var(--font-display)] text-xl tracking-wide text-[var(--sl-ink)] uppercase md:text-2xl">
                 {card.title}
               </h3>
@@ -67,7 +69,27 @@ export function DifferenceSection() {
               data-aos-delay={360 + i * 120}
               data-aos-duration="700"
             >
-              <span className="shrink-0 text-xl text-[var(--sl-gold)]/40" aria-hidden dangerouslySetInnerHTML={{ __html: cardIcons[i + 3] }} />
+              {card.id === "team" ? (
+                <Image
+                  src="/vetted-icon.svg"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="shrink-0"
+                  aria-hidden
+                />
+              ) : card.id === "happy" ? (
+                <Image
+                  src="/satisfaction-icon.svg"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="shrink-0"
+                  aria-hidden
+                />
+              ) : (
+                <span className="shrink-0 text-xl text-[var(--sl-gold)]/40" aria-hidden dangerouslySetInnerHTML={{ __html: cardIcons[i + 3] }} />
+              )}
               <div>
                 <h3 className="font-[family-name:var(--font-display)] text-lg tracking-wide text-[var(--sl-ink)] uppercase">
                   {card.title}
@@ -83,3 +105,4 @@ export function DifferenceSection() {
     </section>
   );
 }
+
